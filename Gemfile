@@ -56,6 +56,7 @@ group :development do
   gem "web-console"
 end
 
+# Native Ruby interface to Tailwind CSS CLI [https://github.com/flavorjones/tailwindcss-ruby]
 gem "tailwindcss-ruby", "~> 4.1"
-
+# Tailwind CSS integration for Rails via tailwindcss-ruby [https://github.com/rails/tailwindcss-rails]
 gem "tailwindcss-rails", "~> 4.3"
