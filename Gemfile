@@ -62,3 +62,5 @@ gem "tailwindcss-ruby", "~> 4.1"
 gem "tailwindcss-rails", "~> 4.3"
 # ViewComponent for building reusable components [https://viewcomponent.org]
 gem "view_component"
+# Lucide icons for Rails [https://github.com/heyvito/lucide-rails]
+gem "lucide-rails"
