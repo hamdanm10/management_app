@@ -18,10 +18,11 @@ A web application for tracking **incoming and outgoing stock**, and generating *
 
 - 📥 Record incoming stock (daily entries)
 - 📤 Record outgoing stock (sales)
-- 📊 Generate daily sales reports with revenue and profit
-- 📦 Manage products and categories
+- 📊 Reports with revenue and profit
+- 📦 Manage products
 - 🧾 Sales channel tagging (e.g. market, online shop)
 - 🌐 Access the app over local network (LAN)
+- etc.
 
 ---
 
