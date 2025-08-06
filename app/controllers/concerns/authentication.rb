@@ -34,8 +34,17 @@ module Authentication
       redirect_to new_session_path
     end
 
+    def authentication_url
+      case Current.user.user_type
+      when "super_admin"
+        super_admin_dashboard_path
+      when "admin"
+        admin_dashboard_path
+      end
+    end
+
     def after_authentication_url
-      session.delete(:return_to_after_authenticating) || root_url
+      session.delete(:return_to_after_authenticating) || authentication_url
     end
 
     def start_new_session_for(user)
