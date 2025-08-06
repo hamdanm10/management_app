@@ -10,7 +10,7 @@ A web application for tracking **incoming and outgoing stock**, and generating *
 - **Rails** 8.0.2
 - **Database**: PostgreSQL
 - **Frontend**: Tailwind CSS + ESBuild
-- **Bundler**: Yarn or Bun (optional)
+- **Bundler**: Yarn
 
 ---
 
