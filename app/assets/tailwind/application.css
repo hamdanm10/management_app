@@ -1,10 +1,12 @@
 @import "tailwindcss";
+
+/* Flowbite */
 @import "flowbite/src/themes/default";
 @plugin "flowbite/plugin";
 @source "../../../node_modules/flowbite";
 
-/* Customizing colors */
 @theme {
+  /* Colors */
   --color-primary-100: #dbeafe;
   --color-primary-300: #93c5fd;
   --color-primary-500: #3b82f6;
@@ -52,4 +54,7 @@
   --color-info-500: #a78bfa;
   --color-info-700: #7c3aed;
   --color-info-900: #4c1d95;
+
+  /* Fonts */
+  --font-outfit: "Outfit", "sans-serif";
 }
