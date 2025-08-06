@@ -1,24 +1,54 @@
-# README
+# 📦 Inventory & Sales Management App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A web application for tracking **incoming and outgoing stock**, and generating **sales reports** including revenue and profit summaries.
 
-Things you may want to cover:
+---
 
-* Ruby version
+## 🧰 Tech Stack
 
-* System dependencies
+- **Ruby** 3.4.1
+- **Rails** 8.0.2
+- **Database**: PostgreSQL
+- **Frontend**: Tailwind CSS + ESBuild
+- **Bundler**: Yarn or Bun (optional)
 
-* Configuration
+---
 
-* Database creation
+## 📚 Features
 
-* Database initialization
+- 📥 Record incoming stock (daily entries)
+- 📤 Record outgoing stock (sales)
+- 📊 Generate daily sales reports with revenue and profit
+- 📦 Manage products and categories
+- 🧾 Sales channel tagging (e.g. market, online shop)
+- 🌐 Access the app over local network (LAN)
 
-* How to run the test suite
+---
 
-* Services (job queues, cache servers, search engines, etc.)
+## 🚀 Installation Guide
 
-* Deployment instructions
+### 1. Clone the Repository
 
-* ...
+```bash
+git clone https://github.com/your-username/management_app.git
+cd management_app
+```
+
+### 2. Install Dependencies
+
+```bash
+bundle install
+yarn install
+```
+
+### 3. Setup the Database
+
+```bash
+rails db:create db:migrate db:seed
+```
+
+### 4. Start the Server
+
+```bash
+bin/dev
+```
