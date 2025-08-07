@@ -1,0 +1,22 @@
+<div class="w-full bg-white border max-w-none border-light-300 mt-5 flex flex-col divide-y divide-gray-300 rounded-xl shadow-none">
+  <div class="flex flex-col p-4 gap-4 lg:flex-row lg:items-center lg:justify-between lg:p-6 lg:gap-0">
+    <%= render(RecordLimitComponent.new) %>
+    <div class="flex lg:items-center gap-3">
+      <%= render(SearchComponent.new(search_for: @q, url: super_admin_unit_types_path, search_query: :name_cont)) %>
+      <div>
+        <%= render(Ui::ButtonComponent.new(type: "button", size: "md", variant: "light")) do %>
+          <%= lucide_icon("settings-2", class: "size-5") %>
+        <% end %>
+      </div>
+      <div class="flex">
+        <%= render(Ui::ButtonLinkComponent.new(size: "md", variant: "primary", url: new_super_admin_unit_type_path, class: "flex")) do %>
+          <%= lucide_icon("plus", class: "size-5") %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="overflow-x-auto">
+    asd
+  </div>
+  <%= render PaginationComponent.new(records: unit_types, pagy: pagy) %>
+</div>

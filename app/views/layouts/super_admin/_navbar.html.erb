@@ -16,12 +16,12 @@
   <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
     <button type="button" class="flex items-center text-sm gap-2 hover:cursor-pointer" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
       <span class="sr-only">Open user menu</span>
-      <%= image_tag "avatar.jpg", class: "w-10 h-10 rounded-full border border-gray-300", alt: "user photo" %>
+      <%= image_tag "avatar.jpg", class: "w-10 h-10 rounded-full border border-light-300", alt: "user photo" %>
       <span class="hidden lg:block truncate max-w-[15ch]"><%= current_user.first_name.titleize %></span>
       <%= lucide_icon("chevron-down", class: "size-5 hidden lg:block") %>
     </button>
     <!-- Dropdown menu -->
-    <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-300 rounded-lg shadow-sm w-sm border border-gray-300" id="user-dropdown">
+    <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-300 rounded-lg shadow-sm w-sm border border-light-300" id="user-dropdown">
       <div class="px-4 py-3">
         <span class="block text-sm text-gray-700 truncate max-w-[30ch]">
           <%= current_user.full_name.titleize %>

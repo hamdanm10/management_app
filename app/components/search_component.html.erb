@@ -4,7 +4,7 @@
     <% if params[:limit] %>
       <%= hidden_field_tag :limit, params[:limit] || Pagy::DEFAULT[:items] %>
     <% end %>
-    <%= form.search_field search_query, class: "block w-full p-2 text-gray-700 border border-gray-300 rounded-lg bg-white focus:ring-blue-500 focus:border-blue-500 text-xs lg:text-sm", placeholder: "Search..." %>
+    <%= form.search_field search_query, class: "block w-full p-2 text-gray-700 border border-light-300 rounded-lg bg-white focus:ring-blue-500 focus:border-blue-500 text-xs lg:text-sm", placeholder: "Search..." %>
     <%= render(Ui::ButtonComponent.new(type: "submit", size: "md", variant: "light")) do %>
       <%= lucide_icon("search", class: "size-5") %>
     <% end %>
