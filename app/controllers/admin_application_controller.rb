@@ -1,6 +1,6 @@
 class AdminApplicationController < ApplicationController
   before_action :authenticated_admin!
-  layout "admin_application"
+  layout "admin/application"
 
   private
 
