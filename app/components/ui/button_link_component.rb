@@ -45,7 +45,7 @@ class Ui::ButtonLinkComponent < ViewComponent::Base
     when "dark"
       "text-white bg-dark-500 hover:bg-dark-700 focus:ring-dark-300"
     when "light"
-      "text-dark-500 bg-light-100 hover:bg-light-700 focus:ring-light-300 border border-dark-100"
+      "text-dark-500 bg-light-100 hover:bg-light-700 focus:ring-light-300 border border-light-300"
     when "success"
       "text-white bg-success-500 hover:bg-success-700 focus:ring-success-300"
     when "danger"
