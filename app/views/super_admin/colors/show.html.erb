@@ -1,0 +1,12 @@
+<div class="flex gap-0 items-center justify-between">
+  <h2 class="text-xl font-bold text-gray-700">Colors Documentation</h2>
+  <div class="hidden lg:block">
+    <%= render(Ui::BreadcrumbComponent.new) do %>
+      <%= render(Ui::BreadcrumbItemComponent.new(url: super_admin_dashboard_path, icon: "layout-grid", name: "Dashboard")) %>
+      <%= render(Ui::BreadcrumbItemComponent.new(name: "Colors Documentation", last: true)) %>
+    <% end %>
+  </div>
+</div>
+<div class="mt-5 w-full bg-white border border-gray-300 rounded-lg overflow-x-auto">
+  <%= render "color_list" %>
+</div>
