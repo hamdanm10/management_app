@@ -1,0 +1,15 @@
+<aside id="<%= sidebar_id %>" class="fixed top-0 left-0 z-50 w-64 h-screen transition-transform -translate-x-full lg:translate-x-0" aria-label="Sidebar">
+  <div class="h-full px-3 py-8 overflow-y-auto bg-white border-r border-r-gray-300">
+    <ul class="space-y-3 font-medium">
+      <li>
+        <div class="pb-7">
+          <%= image_tag "logo.svg", class: "h-6 ps-2" %>
+        </div>
+      </li>
+      <li>
+        <div class="px-2 text-xs text-gray-400 uppercase">Menu</div>
+      </li>
+      <%= content %>
+    </ul>
+  </div>
+</aside>
