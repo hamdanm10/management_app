@@ -24,7 +24,7 @@
   <body class="font-outfit bg-gray-50">
     <%# render App::NotificationComponent.new(message: flash[:notice]) %>
     <%= render "layouts/super_admin/sidebar" %>
-    <%# render "layouts/admin/navbar" %>
+    <%= render "layouts/super_admin/navbar" %>
     <div class="px-4 py-24 lg:ml-64 lg:px-8 2xl:px-14">
       <%= yield %>
     </div>
