@@ -6,10 +6,6 @@
   main_modules = [
     { icon: "layout-grid", url: super_admin_dashboard_path, name: "Dashboard" },
   ]
-
-  documentation_modules = [
-    { icon: "palette", url: super_admin_color_path, name: "Color" }
-  ]
 %>
 <%= render(Ui::SidebarComponent.new(sidebar_id: "super-admin-sidebar")) do %>
   <li>
@@ -30,18 +26,6 @@
           icon: main_module[:icon],
           url: main_module[:url],
           name: main_module[:name]
-        )) %>
-  <% end %>
-  <li>
-    <div class="px-2 text-xs text-dark-100 uppercase flex items-center gap-1">
-      <%= lucide_icon("book", class: "size-4") %>Documentation
-    </div>
-  </li>
-  <% documentation_modules.each do |documentation_module| %>
-    <%= render(Ui::SidebarLinkComponent.new(
-          icon: documentation_module[:icon],
-          url: documentation_module[:url],
-          name: documentation_module[:name]
         )) %>
   <% end %>
 <% end %>
