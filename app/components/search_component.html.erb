@@ -1,6 +1,6 @@
 <%= search_form_for search_for, url: url do |form| %>
   <label for="q_<%= search_query %>" class="sr-only">Label</label>
-  <div class="flex gap-2">
+  <div class="flex gap-3">
     <% if params[:limit] %>
       <%= hidden_field_tag :limit, params[:limit] || Pagy::DEFAULT[:items] %>
     <% end %>

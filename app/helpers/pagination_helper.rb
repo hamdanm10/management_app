@@ -22,7 +22,7 @@ module PaginationHelper
     end
 
     link_to link,
-            class: "#{button_class} #{addition} cursor-default bg-gray-100 text-center font-medium inline-flex items-center justify-center border border-gray-300 focus-within:ring-gray-300 px-3 lg:px-5 py-2.5 text-xs lg:text-sm focus-within:ring-4 focus-within:outline-hidden rounded-lg text-gray-700 hover:bg-gray-100" do
+            class: "#{button_class} #{addition} cursor-default bg-gray-100 text-center font-medium inline-flex items-center justify-center border border-light-300 focus-within:ring-gray-300 px-3 lg:px-5 py-2.5 text-xs lg:text-sm focus-within:ring-4 focus-within:outline-hidden rounded-lg text-gray-700 hover:bg-gray-100" do
       if previous
         content_tag(:span, 'Prev')
       else
