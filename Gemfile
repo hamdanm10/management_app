@@ -64,3 +64,5 @@ gem "tailwindcss-rails", "~> 4.3"
 gem "view_component"
 # Lucide icons for Rails [https://github.com/heyvito/lucide-rails]
 gem "lucide-rails"
+# Ransack for advanced search forms [https://activerecord-hackery.github.io/ransack/
+gem "ransack"
