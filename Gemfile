@@ -66,3 +66,5 @@ gem "view_component"
 gem "lucide-rails"
 # Ransack for advanced search forms [https://activerecord-hackery.github.io/ransack/
 gem "ransack"
+# Pagy for pagination [https://ddnexus.github.io/pagy/quick-start/]
+gem "pagy", "~> 9.3"
