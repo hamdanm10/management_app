@@ -27,7 +27,7 @@ class Ui::SidebarLinkComponent < ViewComponent::Base
     when true
       "text-primary-500 bg-primary-100"
     when false
-      "text-secondary-700 hover:bg-secondary-100"
+      "text-secondary-500 hover:bg-secondary-100"
     end
   end 
 end
