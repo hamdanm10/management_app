@@ -1,0 +1,28 @@
+<%= form_with model: @sales_channel, 
+    url: url, 
+    class: "mt-5 flex flex-col gap-5" do |form| %>
+  <div class="block bg-white border border-gray-300 rounded-lg divide-y divide-gray-300">
+    <div class="p-4 lg:p-6">
+      <h3 class="font-medium text-gray-700">Sales Channel Form</h3>
+      <p class="text-sm text-gray-500">Fill out the form below to create a new sales channel.</p>
+    </div>
+    <div class="p-4 lg:p-6 flex flex-col gap-3">
+      <div>
+        <%= render(Ui::LabelInputComponent.new(form: form, field_name: :name, label: "Sales Channel Name", required: true)) %>
+        <%= render(Ui::TextInputComponent.new(form: form, field_name: :name, class: "mt-2")) %>
+        <%= render(ErrorInputComponent.new(model: @sales_channel, field_name: :name)) %>
+      </div>
+      <div>
+        <%= render(Ui::LabelInputComponent.new(form: form, field_name: :note, label: "Note")) %>
+        <%= render(Ui::TextAreaInputComponent.new(form: form, field_name: :note, class: "mt-2")) %>
+        <%= render(ErrorInputComponent.new(model: @sales_channel, field_name: :note)) %>
+      </div>
+    </div>
+  </div>
+  <div class="flex items-center justify-end">
+    <%= render(Ui::ButtonComponent.new(type: "submit", size: "md", variant: "primary", class: "flex items-center gap-2")) do %>
+      <%= lucide_icon("save", class: "size-5") %>
+      <span>Save</span>
+    <% end %>
+  </div>
+<% end %>
