@@ -1,5 +1,5 @@
 class UnitType < ApplicationRecord
-  validates :name, presence: true
+  validates :name, presence: true, length: { maximum: 25 }
   validates :note, presence: false
 
   normalizes :name, with: ->(e) { e.strip.downcase }
