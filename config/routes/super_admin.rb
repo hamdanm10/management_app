@@ -5,4 +5,5 @@ namespace :super_admin do
   resource :dashboard, only: %i[show]
   resources :supplies
   resources :ingredient_stocks
+  resources :expenses
 end
