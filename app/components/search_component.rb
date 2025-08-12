@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "ransack/helpers/form_helper"
+
 class SearchComponent < ViewComponent::Base
   include LucideRails::RailsHelper
   include Ransack::Helpers::FormHelper
