@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_08_091118) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_12_150859) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -40,6 +40,16 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_08_091118) do
     t.index ["user_id"], name: "index_sessions_on_user_id"
   end
 
+  create_table "supplies", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "quantity", null: false
+    t.bigint "unit_type_id", null: false
+    t.text "note"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["unit_type_id"], name: "index_supplies_on_unit_type_id"
+  end
+
   create_table "unit_types", force: :cascade do |t|
     t.string "name", null: false
     t.text "note"
@@ -60,4 +70,5 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_08_091118) do
 
   add_foreign_key "ingredient_stocks", "unit_types"
   add_foreign_key "sessions", "users"
+  add_foreign_key "supplies", "unit_types"
 end
