@@ -1,0 +1,34 @@
+<%
+  master_modules = [
+    { icon: "settings", url: super_admin_unit_types_path, name: "Unit Type" },
+    { icon: "settings", url: super_admin_sales_channels_path, name: "Sales Channel" },
+  ]
+
+  main_modules = [
+    { icon: "layout-grid", url: super_admin_dashboard_path, name: "Dashboard" },
+    { icon: "container", url: super_admin_supplies_path, name: "Supply" },
+    { icon: "leafy-green", url: super_admin_ingredient_stocks_path, name: "Ingredient Stock" },
+  ]
+%>
+<%= render(Ui::SidebarComponent.new(sidebar_id: "super-admin-sidebar")) do %>
+  <li>
+    <div class="px-2 text-xs text-dark-100 uppercase">Master</div>
+  </li>
+  <% master_modules.each do |master_module| %>
+    <%= render(Ui::SidebarLinkComponent.new(
+          icon: master_module[:icon],
+          url: master_module[:url],
+          name: master_module[:name]
+        )) %>
+  <% end %>
+  <li>
+    <div class="px-2 text-xs text-dark-100 uppercase">Main</div>
+  </li>
+  <% main_modules.each do |main_module| %>
+    <%= render(Ui::SidebarLinkComponent.new(
+          icon: main_module[:icon],
+          url: main_module[:url],
+          name: main_module[:name]
+        )) %>
+  <% end %>
+<% end %>

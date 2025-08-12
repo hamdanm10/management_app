@@ -55,3 +55,16 @@ group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
 end
+
+# Native Ruby interface to Tailwind CSS CLI [https://github.com/flavorjones/tailwindcss-ruby]
+gem "tailwindcss-ruby", "~> 4.1"
+# Tailwind CSS integration for Rails via tailwindcss-ruby [https://github.com/rails/tailwindcss-rails]
+gem "tailwindcss-rails", "~> 4.3"
+# ViewComponent for building reusable components [https://viewcomponent.org]
+gem "view_component"
+# Lucide icons for Rails [https://github.com/heyvito/lucide-rails]
+gem "lucide-rails"
+# Ransack for advanced search forms [https://activerecord-hackery.github.io/ransack/
+gem "ransack"
+# Pagy for pagination [https://ddnexus.github.io/pagy/quick-start/]
+gem "pagy", "~> 9.3"

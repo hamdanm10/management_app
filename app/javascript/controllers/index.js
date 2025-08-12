@@ -4,5 +4,11 @@
 
 import { application } from "./application"
 
-import HelloController from "./hello_controller"
-application.register("hello", HelloController)
+import DialogController from "./dialog_controller"
+application.register("dialog", DialogController)
+
+import NotificationController from "./notification_controller"
+application.register("notification", NotificationController)
+
+import RecordLimitSelectorController from "./record_limit_selector_controller"
+application.register("record-limit-selector", RecordLimitSelectorController)
