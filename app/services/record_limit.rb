@@ -1,5 +1,5 @@
 class RecordLimit < ApplicationService
-  VALID_LIMITS = ["10", "30", "50"].freeze
+  VALID_LIMITS = ["50", "100"].freeze
 
   def call(limit_param)
     if VALID_LIMITS.include?(limit_param)
