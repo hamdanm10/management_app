@@ -1,0 +1,19 @@
+<div class="flex items-center justify-between">
+  <div class="flex gap-4 items-center">
+    <%= render(Ui::ButtonLinkComponent.new(size: "sm", variant: "light", url: super_admin_expense_expense_items_path(@expense))) do %>
+      <%= lucide_icon("chevron-left", class: "size-5") %>
+    <% end %>
+    <h2 class="text-xl font-bold text-gray-700">
+      <%= "#{format_date(@expense.expense_at)} - New Expense Item" %>
+    </h2>
+  </div>
+  <div class="hidden lg:block">
+    <%= render(Ui::BreadcrumbComponent.new) do %>
+      <%= render(Ui::BreadcrumbItemComponent.new(url: super_admin_dashboard_path, icon: "layout-grid", name: "Dashboard")) %>
+      <%= render(Ui::BreadcrumbItemComponent.new(url: super_admin_expenses_path, name: "Expenses")) %>
+      <%= render(Ui::BreadcrumbItemComponent.new(url: super_admin_expense_expense_items_path(@expense), name: "Expense Items")) %>
+      <%= render(Ui::BreadcrumbItemComponent.new(name: "New Expense Item", last: true)) %>
+    <% end %>
+  </div>
+</div>
+<%= render "form", url: super_admin_expense_expense_items_path(@expense), expense_item: @expense_item %>

@@ -6,6 +6,7 @@ class UnitType < ApplicationRecord
 
   has_many :supplies, dependent: :destroy
   has_many :ingredient_stocks, dependent: :destroy
+  has_many :expense_items, dependent: :destroy
 
   def self.ransackable_attributes(auth_object = nil)
     ["name"]

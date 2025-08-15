@@ -1,68 +1,63 @@
 class SuperAdmin::ExpensesController < SuperAdminApplicationController
   def index
-    # limit = RecordLimit.call(params[:limit])
+    limit = RecordLimit.call(params[:limit])
 
-    # @q = SalesChannel.ransack(params[:q])
-    # @sales_channels = @q.result.order(name: :asc)
-    # @pagy, @sales_channels = pagy(@sales_channels, limit:)
+    @expenses = Expense.order(expense_at: :desc)
+    @pagy, @expenses = pagy(@expenses, limit:)
   end
 
-  # def show
-  #   @sales_channel = sales_channel_scope
-  # end
+  def new
+    @expense = Expense.new
+  end
 
-  # def new
-  #   @sales_channel = SalesChannel.new
-  # end
+  def create
+    result = Expenses::Create.call(expense: expense_params)
 
-  # def create
-  #   result = SalesChannels::Create.call(sales_channel: sales_channel_params)
+    if result.success?
+      redirect_to new_super_admin_expense_path, notice: "Expense successfully created."
+    else
+      @expense = result.error[:expense]
 
-  #   if result.success?
-  #     redirect_to new_super_admin_sales_channel_path, notice: "Sales channel successfully created."
-  #   else
-  #     @sales_channel = result.error[:sales_channel]
+      render :new, status: :unprocessable_entity
+    end
+  end
 
-  #     render :new, status: :unprocessable_entity
-  #   end
-  # end
+  def edit
+    @expense = expense_scope
+  end
 
-  # def edit
-  #   @sales_channel = sales_channel_scope
-  # end
+  def update
+    result = Expenses::Update.call(
+      expense: expense_scope,
+      expense_attributes: expense_params
+    )
 
-  # def update
-  #   result = SalesChannels::Update.call(
-  #     sales_channel: sales_channel_scope,
-  #     sales_channel_attributes: sales_channel_params
-  #   )
+    if result.success?
+      expense = result.payload[:expense]
 
-  #   if result.success?
-  #     sales_channel = result.payload[:sales_channel]
+      redirect_to edit_super_admin_expense_path(expense), notice: "Expense successfully updated."
+    else
+      @expense = result.error[:expense]
 
-  #     redirect_to edit_super_admin_sales_channel_path(sales_channel), notice: "Sales channel successfully updated."
-  #   else
-  #     @sales_channel = result.error[:sales_channel]
+      render :edit, status: :unprocessable_entity
+    end
+  end
 
-  #     render :edit, status: :unprocessable_entity
-  #   end
-  # end
+  def destroy
+    result = Expenses::Destroy.call(
+      expense: expense_scope
+    )
 
-  # def destroy
-  #   result = SalesChannels::Destroy.call(
-  #     sales_channel: sales_channel_scope
-  #   )
+    redirect_to super_admin_expenses_path, notice: "Expense successfully deleted."
+  end
 
-  #   redirect_to super_admin_sales_channels_path, notice: "Sales channel successfully deleted."
-  # end
+  private
 
-  # private
+  def expense_params
+    params.require(:expense).permit(:expense_at)
+  end
 
-  # def sales_channel_params
-  #   params.require(:sales_channel).permit(:name, :note)
-  # end
-
-  # def sales_channel_scope
-  #   SalesChannel.find(params[:id])
-  # end
+  def expense_scope
+    Expense.find(params[:id])
+  end
 end

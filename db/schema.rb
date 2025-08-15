@@ -10,9 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_12_150859) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_15_050830) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "expense_items", force: :cascade do |t|
+    t.bigint "expense_id", null: false
+    t.string "name", null: false
+    t.decimal "unit_price", precision: 12, scale: 2, default: "0.0", null: false
+    t.integer "quantity", null: false
+    t.bigint "unit_type_id", null: false
+    t.decimal "total_price", precision: 12, scale: 2, default: "0.0", null: false
+    t.text "note"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["expense_id"], name: "index_expense_items_on_expense_id"
+    t.index ["unit_type_id"], name: "index_expense_items_on_unit_type_id"
+  end
+
+  create_table "expenses", force: :cascade do |t|
+    t.datetime "expense_at", precision: nil, null: false
+    t.decimal "total_price", precision: 12, scale: 2, default: "0.0", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "ingredient_stocks", force: :cascade do |t|
     t.string "name", null: false
@@ -68,6 +89,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_12_150859) do
     t.index ["email_address"], name: "index_users_on_email_address", unique: true
   end
 
+  add_foreign_key "expense_items", "expenses"
+  add_foreign_key "expense_items", "unit_types"
   add_foreign_key "ingredient_stocks", "unit_types"
   add_foreign_key "sessions", "users"
   add_foreign_key "supplies", "unit_types"
