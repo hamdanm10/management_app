@@ -6,6 +6,7 @@ namespace :super_admin do
   resources :expenses, except: %i[show] do
     resources :expense_items
   end
+  resources :stock_entries, except: %i[show]
 
   # Master resources
   resources :unit_types

@@ -1,0 +1,10 @@
+<div class="flex gap-0 items-center justify-between">
+  <h2 class="text-xl font-bold text-gray-700">Stock Entries</h2>
+  <div class="hidden lg:block">
+    <%= render(Ui::BreadcrumbComponent.new) do %>
+      <%= render(Ui::BreadcrumbItemComponent.new(url: super_admin_dashboard_path, icon: "layout-grid", name: "Dashboard")) %>
+      <%= render(Ui::BreadcrumbItemComponent.new(name: "Stock Entries", last: true)) %>
+    <% end %>
+  </div>
+</div>
+<%= render "stock_entry_list", stock_entries: @stock_entries, pagy: @pagy, q: @q %>

@@ -1,0 +1,23 @@
+<%= form_with model: stock_entry, 
+    url: url, 
+    class: "mt-5 flex flex-col gap-5" do |form| %>
+  <div class="block bg-white border border-gray-300 rounded-lg divide-y divide-gray-300">
+    <div class="p-4 lg:p-6">
+      <h3 class="font-medium text-gray-700">Stock Entry Form</h3>
+      <p class="text-sm text-gray-500">Fill out the form below to create a new stock entry.</p>
+    </div>
+    <div class="p-4 lg:p-6 flex flex-col gap-3">
+      <div>
+        <%= render(Ui::LabelInputComponent.new(form: form, field_name: :entry_at, label: "Entry At", required: true)) %>
+        <%= render(Ui::DateInputComponent.new(form: form, field_name: :entry_at, class: "mt-2")) %>
+        <%= render(ErrorInputComponent.new(model: stock_entry, field_name: :entry_at)) %>
+      </div>
+    </div>
+  </div>
+  <div class="flex items-center justify-end">
+    <%= render(Ui::ButtonComponent.new(type: "submit", size: "md", variant: "primary", class: "flex items-center gap-2")) do %>
+      <%= lucide_icon("save", class: "size-5") %>
+      <span>Save</span>
+    <% end %>
+  </div>
+<% end %>
