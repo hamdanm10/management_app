@@ -1,0 +1,47 @@
+<%= form_with model: expense_item, 
+    url: url, 
+    class: "mt-5 flex flex-col gap-5" do |form| %>
+  <div class="block bg-white border border-gray-300 rounded-lg divide-y divide-gray-300">
+    <div class="p-4 lg:p-6">
+      <h3 class="font-medium text-gray-700">Expense Item</h3>
+      <p class="text-sm text-gray-500">Fill out the form below to create a new expense item.</p>
+    </div>
+    <div class="p-4 lg:p-6 flex flex-col gap-3">
+      <div>
+        <%= render(Ui::LabelInputComponent.new(form: form, field_name: :name, label: "Item Name", required: true)) %>
+        <%= render(Ui::TextInputComponent.new(form: form, field_name: :name, class: "mt-2")) %>
+        <%= render(ErrorInputComponent.new(model: expense_item, field_name: :name)) %>
+      </div>
+      <div>
+        <%= render(Ui::LabelInputComponent.new(form: form, field_name: :unit_price, label: "Unit Price", required: true)) %>
+        <%= render(Ui::NumberInputComponent.new(form: form, field_name: :unit_price, class: "mt-2")) %>
+        <%= render(ErrorInputComponent.new(model: expense_item, field_name: :unit_price)) %>
+      </div>
+      <div>
+        <%= render(Ui::LabelInputComponent.new(form: form, field_name: :quantity, label: "Quantity", required: true)) %>
+        <%= render(Ui::NumberInputComponent.new(form: form, field_name: :quantity, class: "mt-2")) %>
+        <%= render(ErrorInputComponent.new(model: expense_item, field_name: :quantity)) %>
+      </div>
+      <div>
+        <%= render(Ui::LabelInputComponent.new(form: form, field_name: :unit_type_id, label: "Unit Type", required: true)) %>
+        <%= render(Ui::SelectInputComponent.new(form: form, field_name: :unit_type_id, records: unit_types_for_select, prompt: "Choose unit type", current_value: expense_item.unit_type_id, class: "mt-2")) %>
+        <%= render(ErrorInputComponent.new(model: expense_item, field_name: :unit_type_id)) %>
+      </div>
+      <div>
+        <%= render(Ui::LabelInputComponent.new(form: form, field_name: :total_price, label: "Total Price")) %>
+        <%= render(Ui::NumberInputComponent.new(form: form, field_name: :total_price, class: "mt-2", readonly: true)) %>
+      </div>
+      <div>
+        <%= render(Ui::LabelInputComponent.new(form: form, field_name: :note, label: "Note")) %>
+        <%= render(Ui::TextAreaInputComponent.new(form: form, field_name: :note, class: "mt-2")) %>
+        <%= render(ErrorInputComponent.new(model: expense_item, field_name: :note)) %>
+      </div>
+    </div>
+  </div>
+  <div class="flex items-center justify-end">
+    <%= render(Ui::ButtonComponent.new(type: "submit", size: "md", variant: "primary", class: "flex items-center gap-2")) do %>
+      <%= lucide_icon("save", class: "size-5") %>
+      <span>Save</span>
+    <% end %>
+  </div>
+<% end %>
