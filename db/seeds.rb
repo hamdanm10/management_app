@@ -5,13 +5,6 @@ users = [
     email_address: "super_admin@gmail.com",
     password: "asdfasdf",
     user_type: :super_admin
-  },
-  {
-    first_name: "Admin",
-    last_name: "",
-    email_address: "admin@gmail.com",
-    password: "asdfasdf",
-    user_type: :admin
   }
 ]
 
