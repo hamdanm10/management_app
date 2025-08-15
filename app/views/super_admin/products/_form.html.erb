@@ -1,0 +1,33 @@
+<%= form_with model: product, 
+    url: url, 
+    class: "mt-5 flex flex-col gap-5" do |form| %>
+  <div class="block bg-white border border-gray-300 rounded-lg divide-y divide-gray-300">
+    <div class="p-4 lg:p-6">
+      <h3 class="font-medium text-gray-700">Product Form</h3>
+      <p class="text-sm text-gray-500">Fill out the form below to create a new product.</p>
+    </div>
+    <div class="p-4 lg:p-6 flex flex-col gap-3">
+      <div>
+        <%= render(Ui::LabelInputComponent.new(form: form, field_name: :name, label: "Product Name", required: true)) %>
+        <%= render(Ui::TextInputComponent.new(form: form, field_name: :name, class: "mt-2")) %>
+        <%= render(ErrorInputComponent.new(model: product, field_name: :name)) %>
+      </div>
+      <div>
+        <%= render(Ui::LabelInputComponent.new(form: form, field_name: :cost_price, label: "Cost Price", required: true)) %>
+        <%= render(Ui::NumberInputComponent.new(form: form, field_name: :cost_price, class: "mt-2")) %>
+        <%= render(ErrorInputComponent.new(model: product, field_name: :cost_price)) %>
+      </div>
+      <div>
+        <%= render(Ui::LabelInputComponent.new(form: form, field_name: :selling_price, label: "Selling Price", required: true)) %>
+        <%= render(Ui::NumberInputComponent.new(form: form, field_name: :selling_price, class: "mt-2")) %>
+        <%= render(ErrorInputComponent.new(model: product, field_name: :selling_price)) %>
+      </div>
+    </div>
+  </div>
+  <div class="flex items-center justify-end">
+    <%= render(Ui::ButtonComponent.new(type: "submit", size: "md", variant: "primary", class: "flex items-center gap-2")) do %>
+      <%= lucide_icon("save", class: "size-5") %>
+      <span>Save</span>
+    <% end %>
+  </div>
+<% end %>
