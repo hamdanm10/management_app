@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import ChoicesSelectController from "./choices_select_controller"
+application.register("choices-select", ChoicesSelectController)
+
 import DialogController from "./dialog_controller"
 application.register("dialog", DialogController)
 

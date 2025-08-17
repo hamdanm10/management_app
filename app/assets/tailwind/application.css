@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Choices Select */
+@import "choices.js/public/assets/styles/choices.min.css";
+
 /* Flowbite */
 @import "flowbite/src/themes/default";
 @plugin "flowbite/plugin";

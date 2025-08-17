@@ -2,13 +2,14 @@
   <div class="flex flex-col p-4 gap-4 lg:flex-row lg:items-center lg:justify-between lg:p-6 lg:gap-0">
     <%= render(RecordLimitComponent.new) %>
     <div class="flex lg:items-center gap-3">
+      <%= render(SearchComponent.new(search_for: q, url: super_admin_products_path, search_query: :name_cont)) %>
       <div>
         <%= render(Ui::ButtonComponent.new(type: "button", size: "md", variant: "light")) do %>
           <%= lucide_icon("settings-2", class: "size-5") %>
         <% end %>
       </div>
       <div class="flex">
-        <%= render(Ui::ButtonLinkComponent.new(size: "md", variant: "primary", url: new_super_admin_expense_path, class: "flex")) do %>
+        <%= render(Ui::ButtonLinkComponent.new(size: "md", variant: "primary", url: new_super_admin_product_path, class: "flex")) do %>
           <%= lucide_icon("plus", class: "size-5") %>
         <% end %>
       </div>
@@ -20,16 +21,16 @@
         <thead class="text-xs uppercase text-gray-700 border-b border-b-gray-300 bg-white">
           <tr>
             <th class="px-6 py-3 font-medium normal-case">#</th>
-            <th class="px-6 py-3 font-medium normal-case">Expense At</th>
-            <th class="px-6 py-3 font-medium normal-case">Total Price</th>
-            <th class="px-6 py-3 font-medium normal-case">Expense Items</th>
+            <th class="px-6 py-3 font-medium normal-case">Name</th>
+            <th class="px-6 py-3 font-medium normal-case">Cost Price</th>
+            <th class="px-6 py-3 font-medium normal-case">Selling Price</th>
             <th class="px-6 py-3 font-medium normal-case">Action</th>
           </tr>
         </thead>
         <tbody>
-          <% if expenses.any?%>
-            <% expenses.each_with_index do |expense, index| %>
-              <%= render "expense", expense: expense, index: index, pagy: pagy %>
+          <% if products.any?%>
+            <% products.each_with_index do |product, index| %>
+              <%= render "product", product: product, index: index, pagy: pagy %>
             <% end %>
           <% else %>
             <td colspan="100%" class="px-6 py-4 text-center text-gray-700">
@@ -40,5 +41,5 @@
       </table>
     </div>
   </div>
-  <%= render PaginationComponent.new(records: expenses, pagy: pagy) %>
+  <%= render PaginationComponent.new(records: products, pagy: pagy) %>
 </div>

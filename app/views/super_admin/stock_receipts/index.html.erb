@@ -1,0 +1,18 @@
+<div class="flex items-center justify-between">
+  <div class="flex gap-4 items-center">
+    <%= render(Ui::ButtonLinkComponent.new(size: "sm", variant: "light", url: super_admin_stock_entries_path)) do %>
+      <%= lucide_icon("chevron-left", class: "size-5") %>
+    <% end %>
+    <h2 class="text-xl font-bold text-gray-700">
+      <%= "#{format_date(@stock_entry.entry_at)} - Stock Receipts" %>
+    </h2>
+  </div>
+  <div class="hidden lg:block">
+    <%= render(Ui::BreadcrumbComponent.new) do %>
+      <%= render(Ui::BreadcrumbItemComponent.new(url: super_admin_dashboard_path, icon: "layout-grid", name: "Dashboard")) %>
+      <%= render(Ui::BreadcrumbItemComponent.new(url: super_admin_stock_entries_path, name: "Stock Entries")) %>
+      <%= render(Ui::BreadcrumbItemComponent.new(name: "Stock Receipts", last: true)) %>
+    <% end %>
+  </div>
+</div>
+<%= render "stock_receipt_list", stock_entry: @stock_entry, stock_receipts: @stock_receipts, stock_receipts_quantity: @stock_receipts_quantity, pagy: @pagy, q: @q %>

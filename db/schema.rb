@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_15_050830) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_15_140151) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -45,6 +45,14 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_15_050830) do
     t.index ["unit_type_id"], name: "index_ingredient_stocks_on_unit_type_id"
   end
 
+  create_table "products", force: :cascade do |t|
+    t.string "name", null: false
+    t.decimal "cost_price", precision: 12, scale: 2, default: "0.0", null: false
+    t.decimal "selling_price", precision: 12, scale: 2, default: "0.0", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "sales_channels", force: :cascade do |t|
     t.string "name", null: false
     t.text "note"
@@ -59,6 +67,23 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_15_050830) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_sessions_on_user_id"
+  end
+
+  create_table "stock_entries", force: :cascade do |t|
+    t.datetime "entry_at", precision: nil, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "stock_receipts", force: :cascade do |t|
+    t.bigint "stock_entry_id", null: false
+    t.bigint "product_id", null: false
+    t.integer "quantity", null: false
+    t.text "note"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_stock_receipts_on_product_id"
+    t.index ["stock_entry_id"], name: "index_stock_receipts_on_stock_entry_id"
   end
 
   create_table "supplies", force: :cascade do |t|
@@ -93,5 +118,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_15_050830) do
   add_foreign_key "expense_items", "unit_types"
   add_foreign_key "ingredient_stocks", "unit_types"
   add_foreign_key "sessions", "users"
+  add_foreign_key "stock_receipts", "products"
+  add_foreign_key "stock_receipts", "stock_entries"
   add_foreign_key "supplies", "unit_types"
 end

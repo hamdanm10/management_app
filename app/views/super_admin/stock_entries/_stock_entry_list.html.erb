@@ -8,7 +8,7 @@
         <% end %>
       </div>
       <div class="flex">
-        <%= render(Ui::ButtonLinkComponent.new(size: "md", variant: "primary", url: new_super_admin_expense_path, class: "flex")) do %>
+        <%= render(Ui::ButtonLinkComponent.new(size: "md", variant: "primary", url: new_super_admin_stock_entry_path, class: "flex")) do %>
           <%= lucide_icon("plus", class: "size-5") %>
         <% end %>
       </div>
@@ -20,16 +20,16 @@
         <thead class="text-xs uppercase text-gray-700 border-b border-b-gray-300 bg-white">
           <tr>
             <th class="px-6 py-3 font-medium normal-case">#</th>
-            <th class="px-6 py-3 font-medium normal-case">Expense At</th>
-            <th class="px-6 py-3 font-medium normal-case">Total Price</th>
-            <th class="px-6 py-3 font-medium normal-case">Expense Items</th>
+            <th class="px-6 py-3 font-medium normal-case">Entry At</th>
+            <th class="px-6 py-3 font-medium normal-case">Total Stock</th>
+            <th class="px-6 py-3 font-medium normal-case">Stock Receipts</th>
             <th class="px-6 py-3 font-medium normal-case">Action</th>
           </tr>
         </thead>
         <tbody>
-          <% if expenses.any?%>
-            <% expenses.each_with_index do |expense, index| %>
-              <%= render "expense", expense: expense, index: index, pagy: pagy %>
+          <% if stock_entries.any?%>
+            <% stock_entries.each_with_index do |stock_entry, index| %>
+              <%= render "stock_entry", stock_entry: stock_entry, total_quantities_by_product: @total_quantities_by_product, index: index, pagy: pagy %>
             <% end %>
           <% else %>
             <td colspan="100%" class="px-6 py-4 text-center text-gray-700">
@@ -40,5 +40,5 @@
       </table>
     </div>
   </div>
-  <%= render PaginationComponent.new(records: expenses, pagy: pagy) %>
+  <%= render PaginationComponent.new(records: stock_entries, pagy: pagy) %>
 </div>

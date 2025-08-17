@@ -1,0 +1,59 @@
+<tr class="bg-white last:border-b-0 hover:bg-gray-50 border-b border-b-gray-300">
+  <td class="px-6 py-4 whitespace-nowrap font-normal text-gray-700">
+    <%= pagy.offset + index + 1 %>
+  </td>
+  <td class="px-6 py-4 whitespace-nowrap font-normal text-gray-700">
+    <%= format_date(stock_entry.entry_at) %>
+  </td>
+  <td class="px-6 py-4 whitespace-nowrap font-normal text-gray-700">
+    <% if stock_entry.product_quantities_summary.any? %>
+      <div class="flex flex-col gap-2">
+        <% stock_entry.product_quantities_summary.each do |product_name, total_quantity| %>
+          <div>
+            <span class="text-gray-700"><%= "#{product_name}:" %></span>
+            <span class="font-semibold text-primary-500"><%= total_quantity %></span>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <span class="font-semibold text-danger-500">Empty</span>
+    <% end %>
+  </td>
+  <td class="px-6 py-4 whitespace-nowrap font-normal text-gray-700">
+    <div class="flex">
+      <%= render(Ui::ButtonLinkComponent.new(size: "sm", variant: "light", url: super_admin_stock_entry_stock_receipts_path(stock_entry), class: "flex gap-2 items-center")) do %>
+        <%= lucide_icon("settings", class: "size-5") %>
+        <span>Manage</span>
+      <% end %>
+    </div>
+  </td>
+  <td class="px-6 py-4 whitespace-nowrap font-normal text-gray-700">
+    <div class="flex gap-2 items-center">
+      <%= link_to edit_super_admin_stock_entry_path(stock_entry), class: "text-secondary-700 hover:text-secondary-900" do %>
+        <%= lucide_icon("pencil", class: "size-5") %>
+      <% end %>
+      <%= render(DialogComponent.new) do |dialog| %>
+        <%= dialog.trigger do %>
+          <button type="button" class="flex text-secondary-700 hover:text-secondary-900 cursor-pointer" data-action="dialog#open">
+            <%= lucide_icon("trash-2", class: "size-5") %>
+          </button>
+        <% end %>
+        <%= dialog.header do %>
+          <p class="text-sm text-gray-700">Are you sure?</p>
+        <% end %>
+        <%= dialog.body do %>
+          <span class="text-gray-700">
+            Are you sure you want to delete this stock entry
+            <span class="font-semibold">
+              "<%= format_date(stock_entry.entry_at) %>"
+            </span>?
+          </span>
+        <% end %>
+        <%= dialog.footer do %>
+          <%= render(Ui::ButtonComponent.new(type: "button", size: "sm", variant: "light", data: { action: "dialog#close" }).with_content("Cancel")) %>
+          <%= button_to "Delete", super_admin_stock_entry_path(stock_entry), method: :delete, class: "focus:ring-4 font-medium rounded-full focus:outline-none cursor-pointer text-white bg-danger-500 hover:bg-danger-700 focus:ring-danger-300 px-3 py-2 text-sm" %>
+        <% end %>
+      <% end %>
+    </div>
+  </td>
+</tr>
