@@ -2,7 +2,7 @@ class SuperAdmin::StockEntriesController < SuperAdminApplicationController
   def index
     limit = RecordLimit.call(params[:limit])
 
-    @stock_entries = StockEntry.order(entry_at: :desc)
+    @stock_entries = StockEntry.includes(stock_receipts: :product).order(entry_at: :desc)
     @pagy, @stock_entries = pagy(@stock_entries, limit:)
   end
 

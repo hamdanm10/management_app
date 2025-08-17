@@ -2,13 +2,14 @@
   <div class="flex flex-col p-4 gap-4 lg:flex-row lg:items-center lg:justify-between lg:p-6 lg:gap-0">
     <%= render(RecordLimitComponent.new) %>
     <div class="flex lg:items-center gap-3">
+      <%= render(SearchComponent.new(search_for: q, url: super_admin_stock_entry_stock_receipts_path, search_query: :product_name_cont)) %>
       <div>
         <%= render(Ui::ButtonComponent.new(type: "button", size: "md", variant: "light")) do %>
           <%= lucide_icon("settings-2", class: "size-5") %>
         <% end %>
       </div>
       <div class="flex">
-        <%= render(Ui::ButtonLinkComponent.new(size: "md", variant: "primary", url: new_super_admin_stock_entry_path, class: "flex")) do %>
+        <%= render(Ui::ButtonLinkComponent.new(size: "md", variant: "primary", url: new_super_admin_stock_entry_stock_receipt_path, class: "flex")) do %>
           <%= lucide_icon("plus", class: "size-5") %>
         <% end %>
       </div>
@@ -20,16 +21,15 @@
         <thead class="text-xs uppercase text-gray-700 border-b border-b-gray-300 bg-white">
           <tr>
             <th class="px-6 py-3 font-medium normal-case">#</th>
-            <th class="px-6 py-3 font-medium normal-case">Entry At</th>
-            <th class="px-6 py-3 font-medium normal-case">Total Stock</th>
-            <th class="px-6 py-3 font-medium normal-case">Stock Receipts</th>
+            <th class="px-6 py-3 font-medium normal-case">Product Name</th>
+            <th class="px-6 py-3 font-medium normal-case">Quantity</th>
             <th class="px-6 py-3 font-medium normal-case">Action</th>
           </tr>
         </thead>
         <tbody>
-          <% if stock_entries.any?%>
-            <% stock_entries.each_with_index do |stock_entry, index| %>
-              <%= render "stock_entry", stock_entry: stock_entry, total_quantities_by_product: @total_quantities_by_product, index: index, pagy: pagy %>
+          <% if stock_receipts.any?%>
+            <% stock_receipts.each_with_index do |stock_receipt, index| %>
+              <%= render "stock_receipt", stock_entry: stock_entry, stock_receipt: stock_receipt, index: index, pagy: pagy %>
             <% end %>
           <% else %>
             <td colspan="100%" class="px-6 py-4 text-center text-gray-700">
@@ -40,5 +40,5 @@
       </table>
     </div>
   </div>
-  <%= render PaginationComponent.new(records: stock_entries, pagy: pagy) %>
+  <%= render PaginationComponent.new(records: stock_receipts, pagy: pagy) %>
 </div>

@@ -6,7 +6,26 @@
     <%= format_date(stock_entry.entry_at) %>
   </td>
   <td class="px-6 py-4 whitespace-nowrap font-normal text-gray-700">
-    test
+    <% if stock_entry.product_quantities_summary.any? %>
+      <div class="flex flex-col gap-2">
+        <% stock_entry.product_quantities_summary.each do |product_name, total_quantity| %>
+          <div>
+            <span class="text-gray-700"><%= "#{product_name}:" %></span>
+            <span class="font-semibold text-primary-500"><%= total_quantity %></span>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <span class="font-semibold text-danger-500">Empty</span>
+    <% end %>
+  </td>
+  <td class="px-6 py-4 whitespace-nowrap font-normal text-gray-700">
+    <div class="flex">
+      <%= render(Ui::ButtonLinkComponent.new(size: "sm", variant: "light", url: super_admin_stock_entry_stock_receipts_path(stock_entry), class: "flex gap-2 items-center")) do %>
+        <%= lucide_icon("settings", class: "size-5") %>
+        <span>Manage</span>
+      <% end %>
+    </div>
   </td>
   <td class="px-6 py-4 whitespace-nowrap font-normal text-gray-700">
     <div class="flex gap-2 items-center">
