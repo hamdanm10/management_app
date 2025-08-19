@@ -2,14 +2,13 @@
   <div class="flex flex-col p-4 gap-4 lg:flex-row lg:items-center lg:justify-between lg:p-6 lg:gap-0">
     <%= render(RecordLimitComponent.new) %>
     <div class="flex lg:items-center gap-3">
-      <%= render(SearchComponent.new(search_for: q, url: super_admin_sales_entries_path, search_query: :sale_code_cont)) %>
       <div>
         <%= render(Ui::ButtonComponent.new(type: "button", size: "md", variant: "light")) do %>
           <%= lucide_icon("settings-2", class: "size-5") %>
         <% end %>
       </div>
       <div class="flex">
-        <%= render(Ui::ButtonLinkComponent.new(size: "md", variant: "primary", url: new_super_admin_sales_entry_path, class: "flex")) do %>
+        <%= render(Ui::ButtonLinkComponent.new(size: "md", variant: "primary", url: new_super_admin_sales_entry_sale_path, class: "flex")) do %>
           <%= lucide_icon("plus", class: "size-5") %>
         <% end %>
       </div>
@@ -21,17 +20,17 @@
         <thead class="text-xs uppercase text-gray-700 border-b border-b-gray-300 bg-white">
           <tr>
             <th class="px-6 py-3 font-medium normal-case">#</th>
-            <th class="px-6 py-3 font-medium normal-case">Sale Code</th>
-            <th class="px-6 py-3 font-medium normal-case">Sale At</th>
-            <th class="px-6 py-3 font-medium normal-case">Sale Items</th>
-            <th class="px-6 py-3 font-medium normal-case">Sales</th>
+            <th class="px-6 py-3 font-medium normal-case">Sales Channel</th>
+            <th class="px-6 py-3 font-medium normal-case">Product Name</th>
+            <th class="px-6 py-3 font-medium normal-case">Quantity</th>
+            <th class="px-6 py-3 font-medium normal-case">Note</th>
             <th class="px-6 py-3 font-medium normal-case">Action</th>
           </tr>
         </thead>
         <tbody>
-          <% if sales_entries.any?%>
-            <% sales_entries.each_with_index do |sales_entry, index| %>
-              <%= render "sales_entry", sales_entry: sales_entry, index: index, pagy: pagy %>
+          <% if sales.any?%>
+            <% sales.each_with_index do |sale, index| %>
+              <%= render "sale", sales_entry: sales_entry, sale: sale, index: index, pagy: pagy %>
             <% end %>
           <% else %>
             <td colspan="100%" class="px-6 py-4 text-center text-gray-700">
@@ -42,5 +41,5 @@
       </table>
     </div>
   </div>
-  <%= render PaginationComponent.new(records: sales_entries, pagy: pagy) %>
+  <%= render PaginationComponent.new(records: sales, pagy: pagy) %>
 </div>

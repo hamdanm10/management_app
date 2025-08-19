@@ -9,7 +9,9 @@ namespace :super_admin do
   resources :stock_entries, except: %i[show] do
     resources :stock_receipts
   end
-  resources :sales_entries, except: %i[show]
+  resources :sales_entries, except: %i[show] do
+    resources :sales, except: %i[show]
+  end
 
   # Master resources
   resources :unit_types

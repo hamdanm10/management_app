@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_17_045811) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_18_065721) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -51,6 +51,19 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_17_045811) do
     t.decimal "selling_price", precision: 12, scale: 2, default: "0.0", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "sales", force: :cascade do |t|
+    t.bigint "sales_entry_id", null: false
+    t.bigint "sales_channel_id", null: false
+    t.bigint "product_id", null: false
+    t.integer "quantity", null: false
+    t.text "note"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_sales_on_product_id"
+    t.index ["sales_channel_id"], name: "index_sales_on_sales_channel_id"
+    t.index ["sales_entry_id"], name: "index_sales_on_sales_entry_id"
   end
 
   create_table "sales_channels", force: :cascade do |t|
@@ -125,6 +138,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_17_045811) do
   add_foreign_key "expense_items", "expenses"
   add_foreign_key "expense_items", "unit_types"
   add_foreign_key "ingredient_stocks", "unit_types"
+  add_foreign_key "sales", "products"
+  add_foreign_key "sales", "sales_channels"
+  add_foreign_key "sales", "sales_entries"
   add_foreign_key "sessions", "users"
   add_foreign_key "stock_receipts", "products"
   add_foreign_key "stock_receipts", "stock_entries"

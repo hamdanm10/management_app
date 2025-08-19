@@ -4,6 +4,8 @@ class SalesEntry < ApplicationRecord
 
   before_validation :generate_sale_code
 
+  has_many :sales, dependent: :destroy
+
   def self.ransackable_attributes(auth_object = nil)
     ["sale_code"]
   end
