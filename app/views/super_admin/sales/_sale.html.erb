@@ -12,13 +12,50 @@
     <%= sale.quantity %>
   </td>
   <td class="px-6 py-4 whitespace-nowrap font-normal text-gray-700">
+    <div class="flex flex-col gap-2">
+      <div>
+        <span class="text-gray-700">Sold -</span>
+        <span class="font-semibold text-success-500"><%= sale.sales_report.sold_quantity %></span>
+      </div>
+      <div>
+        <span class="text-gray-700">Unsold -</span>
+        <span class="font-semibold text-warning-500"><%= sale.sales_report.unsold_quantity %></span>
+      </div>
+      <div>
+        <span class="text-gray-700">Waste -</span>
+        <span class="font-semibold text-danger-500"><%= sale.sales_report.waste_quantity %></span>
+      </div>
+    </div>
+  </td>
+  <td class="px-6 py-4 whitespace-nowrap font-normal text-gray-700">
+    <div class="flex flex-col gap-2">
+      <div>
+        <span class="text-gray-700">Revenue -</span>
+        <span class="font-semibold text-warning-500"><%= format_price(sale.sales_report.total_revenue) %></span>
+      </div>
+      <div>
+        <span class="text-gray-700">Profit -</span>
+        <span class="font-semibold text-success-500"><%= format_price(sale.sales_report.total_profit) %></span>
+      </div>
+      <div>
+        <span class="text-gray-700">Loss -</span>
+        <span class="font-semibold text-danger-500"><%= format_price(sale.sales_report.total_loss) %></span>
+      </div>
+    </div>
+  </td>
+  <td class="px-6 py-4 whitespace-nowrap font-normal text-gray-700">
     <%= sale.note %>
   </td>
   <td class="px-6 py-4 whitespace-nowrap font-normal text-gray-700">
-    <div class="flex gap-2 items-center">
-      <%= link_to edit_super_admin_sales_entry_sale_path(sales_entry, sale), class: "text-secondary-700 hover:text-secondary-900" do %>
-        <%= lucide_icon("pencil", class: "size-5") %>
+    <div class="flex">
+      <%= render(Ui::ButtonLinkComponent.new(size: "sm", variant: "light", url: super_admin_sales_entry_sale_sales_report_path(sales_entry, sale, sale.sales_report.id), class: "flex gap-2 items-center")) do %>
+        <%= lucide_icon("notepad-text", class: "size-5") %>
+        <span>Report</span>
       <% end %>
+    </div>
+  </td>
+  <td class="px-6 py-4 whitespace-nowrap font-normal text-gray-700">
+    <div class="flex gap-2 items-center">
       <%= render(DialogComponent.new) do |dialog| %>
         <%= dialog.trigger do %>
           <button type="button" class="flex text-secondary-700 hover:text-secondary-900 cursor-pointer" data-action="dialog#open">

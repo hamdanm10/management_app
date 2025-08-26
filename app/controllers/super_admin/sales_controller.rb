@@ -4,7 +4,7 @@ class SuperAdmin::SalesController < SuperAdminApplicationController
 
     @sales_entry = sales_entry_scope
 
-    @q = @sales_entry.sales.includes(:sales_channel, :product).ransack(params[:q])
+    @q = @sales_entry.sales.includes(:sales_channel, :product, :sales_report).ransack(params[:q])
     @sales = @q.result.order(created_at: :desc)
     @pagy, @sales = pagy(@sales, limit:)
   end
@@ -27,28 +27,28 @@ class SuperAdmin::SalesController < SuperAdminApplicationController
     end
   end
 
-  def edit
-    @sales_entry = sales_entry_scope
-    @sale = sale_scope
-  end
+  # def edit
+  #   @sales_entry = sales_entry_scope
+  #   @sale = sale_scope
+  # end
 
-  def update
-    @sales_entry = sales_entry_scope
-    result = Sales::Update.call(
-      sale: sale_scope,
-      sale_attributes: sale_params
-    )
+  # def update
+  #   @sales_entry = sales_entry_scope
+  #   result = Sales::Update.call(
+  #     sale: sale_scope,
+  #     sale_attributes: sale_params
+  #   )
 
-    if result.success?
-      sale = result.payload[:sale]
+  #   if result.success?
+  #     sale = result.payload[:sale]
 
-      redirect_to edit_super_admin_sales_entry_sale_path(@sales_entry, sale), notice: "Sale successfully updated."
-    else
-      @sale = result.error[:sale]
+  #     redirect_to edit_super_admin_sales_entry_sale_path(@sales_entry, sale), notice: "Sale successfully updated."
+  #   else
+  #     @sale = result.error[:sale]
 
-      render :edit, status: :unprocessable_entity
-    end
-  end
+  #     render :edit, status: :unprocessable_entity
+  #   end
+  # end
 
   def destroy
     result = Sales::Destroy.call(
@@ -69,6 +69,6 @@ class SuperAdmin::SalesController < SuperAdminApplicationController
   end
 
   def sale_scope
-    sales_entry_scope.sales.includes(:sales_channel, :product).find(params[:id])
+    sales_entry_scope.sales.includes(:sales_channel, :product, :sales_report).find(params[:id])
   end
 end

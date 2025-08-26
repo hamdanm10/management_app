@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_18_065721) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_19_143340) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -81,6 +81,21 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_18_065721) do
     t.index ["sale_code"], name: "index_sales_entries_on_sale_code", unique: true
   end
 
+  create_table "sales_reports", force: :cascade do |t|
+    t.bigint "sale_id", null: false
+    t.decimal "cost_price", precision: 12, scale: 2, default: "0.0", null: false
+    t.decimal "selling_price", precision: 12, scale: 2, default: "0.0", null: false
+    t.integer "sold_quantity", null: false
+    t.integer "unsold_quantity", null: false
+    t.integer "waste_quantity", null: false
+    t.decimal "total_revenue", precision: 12, scale: 2, default: "0.0", null: false
+    t.decimal "total_profit", precision: 12, scale: 2, default: "0.0", null: false
+    t.decimal "total_loss", precision: 12, scale: 2, default: "0.0", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["sale_id"], name: "index_sales_reports_on_sale_id"
+  end
+
   create_table "sessions", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "ip_address"
@@ -141,6 +156,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_18_065721) do
   add_foreign_key "sales", "products"
   add_foreign_key "sales", "sales_channels"
   add_foreign_key "sales", "sales_entries"
+  add_foreign_key "sales_reports", "sales"
   add_foreign_key "sessions", "users"
   add_foreign_key "stock_receipts", "products"
   add_foreign_key "stock_receipts", "stock_entries"

@@ -9,9 +9,6 @@
     <%= format_date(sales_entry.sale_at) %>
   </td>
   <td class="px-6 py-4 whitespace-nowrap font-normal text-gray-700">
-    Test
-  </td>
-  <td class="px-6 py-4 whitespace-nowrap font-normal text-gray-700">
     <div class="flex">
       <%= render(Ui::ButtonLinkComponent.new(size: "sm", variant: "light", url: super_admin_sales_entry_sales_path(sales_entry), class: "flex gap-2 items-center")) do %>
         <%= lucide_icon("settings", class: "size-5") %>
