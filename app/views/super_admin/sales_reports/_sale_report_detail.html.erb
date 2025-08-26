@@ -1,0 +1,88 @@
+<div class="mt-5 flex flex-col gap-5">
+  <div class="block bg-white border border-gray-300 rounded-lg divide-y divide-gray-300">
+    <div class="p-4 lg:p-6">
+      <h3 class="font-medium text-gray-700">Sales Report Details</h3>
+      <p class="text-sm text-gray-500">Below are the details of the sales report.</p>
+    </div>
+    <div class="px-4 lg:px-6 text-gray-700 flex flex-col text-sm">
+      <div class="flex gap-2 pt-4 pb-2">
+        <div class="w-2/12">
+          <span class="font-medium">Cost Price</span>
+        </div>
+        <div class="w-10/12">
+          <span><%= format_price(sales_report.cost_price) %></span>
+        </div>
+      </div>
+      <div class="flex gap-2 pt-2 pb-2">
+        <div class="w-2/12">
+          <span class="font-medium">Selling Price</span>
+        </div>
+        <div class="w-10/12">
+          <span><%= format_price(sales_report.selling_price) %></span>
+        </div>
+      </div>
+      <div class="flex gap-2 pt-2 pb-2">
+        <div class="w-2/12">
+          <span class="font-medium">Sold Quantity</span>
+        </div>
+        <div class="w-10/12">
+          <span><%= sales_report.sold_quantity %></span>
+        </div>
+      </div>
+      <div class="flex gap-2 pt-2 pb-2">
+        <div class="w-2/12">
+          <span class="font-medium">Unsold Quantity</span>
+        </div>
+        <div class="w-10/12">
+          <span><%= sales_report.unsold_quantity %></span>
+        </div>
+      </div>
+      <div class="flex gap-2 pt-2 pb-2">
+        <div class="w-2/12">
+          <span class="font-medium">Waste Quantity</span>
+        </div>
+        <div class="w-10/12">
+          <span><%= sales_report.waste_quantity %></span>
+        </div>
+      </div>
+      <div class="flex gap-2 pt-2 pb-2">
+        <div class="w-2/12">
+          <span class="font-medium">Total Quantity</span>
+        </div>
+        <div class="w-10/12">
+          <span><%= sale.quantity %></span>
+        </div>
+      </div>
+      <div class="flex gap-2 pt-2 pb-2">
+        <div class="w-2/12">
+          <span class="font-medium">Total Revenue</span>
+        </div>
+        <div class="w-10/12">
+          <span><%= format_price(sales_report.total_revenue) %></span>
+        </div>
+      </div>
+      <div class="flex gap-2 pt-2 pb-2">
+        <div class="w-2/12">
+          <span class="font-medium">Total Profit</span>
+        </div>
+        <div class="w-10/12">
+          <span><%= format_price(sales_report.total_profit) %></span>
+        </div>
+      </div>
+      <div class="flex gap-2 pt-2 pb-4">
+        <div class="w-2/12">
+          <span class="font-medium">Total Loss</span>
+        </div>
+        <div class="w-10/12">
+          <span><%= format_price(sales_report.total_loss) %></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="flex items-center justify-end">
+    <%= render(Ui::ButtonLinkComponent.new(size: "md", variant: "light", url: edit_super_admin_sales_entry_sale_sales_report_path(sales_entry, sale, sales_report), class: "flex gap-2 items-center")) do %>
+      <%= lucide_icon("settings", class: "size-5") %>
+      <span>Manage</span>
+    <% end %>
+  </div>
+</div>

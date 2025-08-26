@@ -1,0 +1,45 @@
+<div class="w-full bg-white border max-w-none border-light-300 mt-5 flex flex-col divide-y divide-gray-300 rounded-xl shadow-none">
+  <div class="flex flex-col p-4 gap-4 lg:flex-row lg:items-center lg:justify-between lg:p-6 lg:gap-0">
+    <%= render(RecordLimitComponent.new) %>
+    <div class="flex lg:items-center gap-3">
+      <%= render(SearchComponent.new(search_for: q, url: super_admin_sales_entries_path, search_query: :sale_code_cont)) %>
+      <div>
+        <%= render(Ui::ButtonComponent.new(type: "button", size: "md", variant: "light")) do %>
+          <%= lucide_icon("settings-2", class: "size-5") %>
+        <% end %>
+      </div>
+      <div class="flex">
+        <%= render(Ui::ButtonLinkComponent.new(size: "md", variant: "primary", url: new_super_admin_sales_entry_path, class: "flex")) do %>
+          <%= lucide_icon("plus", class: "size-5") %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="overflow-x-auto">
+    <div class="relative overflow-x-auto">
+      <table class="w-full text-left text-xs lg:text-sm text-gray-500">
+        <thead class="text-xs uppercase text-gray-700 border-b border-b-gray-300 bg-white">
+          <tr>
+            <th class="px-6 py-3 font-medium normal-case">#</th>
+            <th class="px-6 py-3 font-medium normal-case">Sale Code</th>
+            <th class="px-6 py-3 font-medium normal-case">Sale At</th>
+            <th class="px-6 py-3 font-medium normal-case">Sales</th>
+            <th class="px-6 py-3 font-medium normal-case">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if sales_entries.any?%>
+            <% sales_entries.each_with_index do |sales_entry, index| %>
+              <%= render "sales_entry", sales_entry: sales_entry, index: index, pagy: pagy %>
+            <% end %>
+          <% else %>
+            <td colspan="100%" class="px-6 py-4 text-center text-gray-700">
+              No data found.
+            </td>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <%= render PaginationComponent.new(records: sales_entries, pagy: pagy) %>
+</div>

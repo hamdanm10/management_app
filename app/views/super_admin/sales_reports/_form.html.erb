@@ -1,0 +1,55 @@
+<%= form_with model: sales_report, 
+    url: url,
+    class: "mt-5 flex flex-col gap-5" do |form| %>
+  <div class="block bg-white border border-gray-300 rounded-lg divide-y divide-gray-300">
+    <div class="p-4 lg:p-6">
+      <h3 class="font-medium text-gray-700">Sales Report</h3>
+      <p class="text-sm text-gray-500"><%= form_instruction("sales report", sales_report) %></p>
+    </div>
+    <div class="p-4 lg:p-6 flex flex-col gap-3">
+      <div>
+        <%= render(Ui::LabelInputComponent.new(form: form, field_name: :cost_price, label: "Cost Price", required: true)) %>
+        <%= render(Ui::NumberInputComponent.new(form: form, field_name: :cost_price, class: "mt-2")) %>
+        <%= render(ErrorInputComponent.new(model: sales_report, field_name: :cost_price)) %>
+      </div>
+      <div>
+        <%= render(Ui::LabelInputComponent.new(form: form, field_name: :selling_price, label: "Selling Price", required: true)) %>
+        <%= render(Ui::NumberInputComponent.new(form: form, field_name: :selling_price, class: "mt-2")) %>
+        <%= render(ErrorInputComponent.new(model: sales_report, field_name: :selling_price)) %>
+      </div>
+      <div>
+        <%= render(Ui::LabelInputComponent.new(form: form, field_name: :sold_quantity, label: "Sold Quantity (#{sale.quantity})", required: true)) %>
+        <%= render(Ui::NumberInputComponent.new(form: form, field_name: :sold_quantity, class: "mt-2")) %>
+        <%= render(ErrorInputComponent.new(model: sales_report, field_name: :sold_quantity)) %>
+      </div>
+      <div>
+        <%= render(Ui::LabelInputComponent.new(form: form, field_name: :unsold_quantity, label: "Unsold Quantity (#{sale.quantity})", required: true)) %>
+        <%= render(Ui::NumberInputComponent.new(form: form, field_name: :unsold_quantity, class: "mt-2")) %>
+        <%= render(ErrorInputComponent.new(model: sales_report, field_name: :unsold_quantity)) %>
+      </div>
+      <div>
+        <%= render(Ui::LabelInputComponent.new(form: form, field_name: :waste_quantity, label: "Waste Quantity (#{sale.quantity})", required: true)) %>
+        <%= render(Ui::NumberInputComponent.new(form: form, field_name: :waste_quantity, class: "mt-2")) %>
+        <%= render(ErrorInputComponent.new(model: sales_report, field_name: :waste_quantity)) %>
+      </div>
+      <div>
+        <%= render(Ui::LabelInputComponent.new(form: form, field_name: :total_revenue, label: "Total Revenue")) %>
+        <%= render(Ui::NumberInputComponent.new(form: form, field_name: :total_revenue, class: "mt-2", readonly: true)) %>
+      </div>
+      <div>
+        <%= render(Ui::LabelInputComponent.new(form: form, field_name: :total_profit, label: "Total Profit")) %>
+        <%= render(Ui::NumberInputComponent.new(form: form, field_name: :total_profit, class: "mt-2", readonly: true)) %>
+      </div>
+      <div>
+        <%= render(Ui::LabelInputComponent.new(form: form, field_name: :total_loss, label: "Total Loss")) %>
+        <%= render(Ui::NumberInputComponent.new(form: form, field_name: :total_loss, class: "mt-2", readonly: true)) %>
+      </div>
+    </div>
+  </div>
+  <div class="flex items-center justify-end">
+    <%= render(Ui::ButtonComponent.new(type: "submit", size: "md", variant: "primary", class: "flex items-center gap-2")) do %>
+      <%= lucide_icon("save", class: "size-5") %>
+      <span>Save</span>
+    <% end %>
+  </div>
+<% end %>
