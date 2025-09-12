@@ -1,0 +1,20 @@
+<div class="mt-5 grid grid-cols-2 gap-4">
+  <div class="p-4 rounded-lg border border-gray-300 bg-white flex justify-between items-center">
+    <div>
+      <h3 class="text-sm font-medium text-gray-700">Production Cost</h3>
+      <p class="mt-1 text-2xl font-semibold text-gray-900"><%= format_price(finance.production_cost) %></p>
+    </div>
+    <div class="bg-gray-100 p-3 rounded-full">
+      <%= lucide_icon("dollar-sign", class: "size-6 text-gray-700") %>
+    </div>
+  </div>
+  <div class="p-4 rounded-lg border border-gray-300 bg-white flex justify-between items-center">
+    <div>
+      <h3 class="text-sm font-medium text-gray-700">Net Profit</h3>
+      <p class="mt-1 text-2xl font-semibold text-gray-900"><%= format_price(finance.net_profit) %></p>
+    </div>
+    <div class="bg-gray-100 p-3 rounded-full">
+      <%= lucide_icon("trending-up", class: "size-6 text-gray-700") %>
+    </div>
+  </div>
+</div>

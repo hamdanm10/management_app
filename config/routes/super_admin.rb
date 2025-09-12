@@ -1,6 +1,7 @@
 namespace :super_admin do
   # Main resources
   resource :dashboard, only: %i[show]
+  resources :finances, except: %i[show new create destroy]
   resources :supplies
   resources :ingredient_stocks
   resources :expenses, except: %i[show] do

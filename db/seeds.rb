@@ -19,3 +19,9 @@ users.each do |attrs|
   user.save!
   puts "#{user.email_address} successfully created or updated."
 end
+
+Finance.first_or_create!(
+  production_cost: 0.00,
+  net_profit: 0.00
+)
+puts "Finance successfully created or found."
