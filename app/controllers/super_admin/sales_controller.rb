@@ -22,6 +22,7 @@ class SuperAdmin::SalesController < SuperAdminApplicationController
       redirect_to new_super_admin_sales_entry_sale_path(@sales_entry), notice: "Sale successfully created."
     else
       @sale = result.error[:sale]
+      @sales_report = result.error[:sales_report]
 
       render :new, status: :unprocessable_entity
     end

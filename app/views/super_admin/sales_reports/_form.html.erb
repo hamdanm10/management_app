@@ -28,21 +28,21 @@
         <%= render(ErrorInputComponent.new(model: sales_report, field_name: :unsold_quantity)) %>
       </div>
       <div>
-        <%= render(Ui::LabelInputComponent.new(form: form, field_name: :waste_quantity, label: "Waste Quantity (#{sale.quantity})", required: true)) %>
-        <%= render(Ui::NumberInputComponent.new(form: form, field_name: :waste_quantity, class: "mt-2")) %>
-        <%= render(ErrorInputComponent.new(model: sales_report, field_name: :waste_quantity)) %>
+        <%= render(Ui::LabelInputComponent.new(form: form, field_name: :revenue, label: "Total Revenue")) %>
+        <%= render(Ui::NumberInputComponent.new(form: form, field_name: :revenue, class: "mt-2", readonly: true)) %>
       </div>
       <div>
-        <%= render(Ui::LabelInputComponent.new(form: form, field_name: :total_revenue, label: "Total Revenue")) %>
-        <%= render(Ui::NumberInputComponent.new(form: form, field_name: :total_revenue, class: "mt-2", readonly: true)) %>
+        <%= render(Ui::LabelInputComponent.new(form: form, field_name: :grass_profit, label: "Total Profit")) %>
+        <%= render(Ui::NumberInputComponent.new(form: form, field_name: :grass_profit, class: "mt-2", readonly: true)) %>
       </div>
       <div>
-        <%= render(Ui::LabelInputComponent.new(form: form, field_name: :total_profit, label: "Total Profit")) %>
-        <%= render(Ui::NumberInputComponent.new(form: form, field_name: :total_profit, class: "mt-2", readonly: true)) %>
+        <%= render(Ui::LabelInputComponent.new(form: form, field_name: :loss, label: "Total Loss")) %>
+        <%= render(Ui::NumberInputComponent.new(form: form, field_name: :loss, class: "mt-2", readonly: true)) %>
       </div>
       <div>
-        <%= render(Ui::LabelInputComponent.new(form: form, field_name: :total_loss, label: "Total Loss")) %>
-        <%= render(Ui::NumberInputComponent.new(form: form, field_name: :total_loss, class: "mt-2", readonly: true)) %>
+        <%= render(Ui::LabelInputComponent.new(form: form, field_name: :is_collected, label: "Collected")) %>
+        <%= render(Ui::SelectInputComponent.new(form: form, field_name: :is_collected, records: [["No", false],["Yes", true]], prompt: "Choose collected", current_value: form.object.is_collected, class: "mt-2")) %>
+        <%= render(ErrorInputComponent.new(model: sales_report, field_name: :is_collected)) %>
       </div>
     </div>
   </div>

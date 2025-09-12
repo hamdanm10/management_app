@@ -87,10 +87,11 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_19_143340) do
     t.decimal "selling_price", precision: 12, scale: 2, default: "0.0", null: false
     t.integer "sold_quantity", null: false
     t.integer "unsold_quantity", null: false
-    t.integer "waste_quantity", null: false
-    t.decimal "total_revenue", precision: 12, scale: 2, default: "0.0", null: false
-    t.decimal "total_profit", precision: 12, scale: 2, default: "0.0", null: false
-    t.decimal "total_loss", precision: 12, scale: 2, default: "0.0", null: false
+    t.decimal "revenue", precision: 12, scale: 2, default: "0.0", null: false
+    t.decimal "grass_profit", precision: 12, scale: 2, default: "0.0", null: false
+    t.decimal "loss", precision: 12, scale: 2, default: "0.0", null: false
+    t.decimal "net_profit", precision: 12, scale: 2, default: "0.0", null: false
+    t.boolean "is_collected", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["sale_id"], name: "index_sales_reports_on_sale_id"

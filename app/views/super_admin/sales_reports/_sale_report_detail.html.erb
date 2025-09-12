@@ -26,7 +26,7 @@
           <span class="font-medium">Sold Quantity</span>
         </div>
         <div class="w-10/12">
-          <span><%= sales_report.sold_quantity %></span>
+          <span class="text-success-500"><%= sales_report.sold_quantity %></span>
         </div>
       </div>
       <div class="flex gap-2 pt-2 pb-2">
@@ -34,15 +34,7 @@
           <span class="font-medium">Unsold Quantity</span>
         </div>
         <div class="w-10/12">
-          <span><%= sales_report.unsold_quantity %></span>
-        </div>
-      </div>
-      <div class="flex gap-2 pt-2 pb-2">
-        <div class="w-2/12">
-          <span class="font-medium">Waste Quantity</span>
-        </div>
-        <div class="w-10/12">
-          <span><%= sales_report.waste_quantity %></span>
+          <span class="text-danger-500"><%= sales_report.unsold_quantity %></span>
         </div>
       </div>
       <div class="flex gap-2 pt-2 pb-2">
@@ -55,26 +47,46 @@
       </div>
       <div class="flex gap-2 pt-2 pb-2">
         <div class="w-2/12">
-          <span class="font-medium">Total Revenue</span>
+          <span class="font-medium">Grass Profit</span>
         </div>
         <div class="w-10/12">
-          <span><%= format_price(sales_report.total_revenue) %></span>
+          <span class="text-success-500"><%= format_price(sales_report.grass_profit) %></span>
         </div>
       </div>
       <div class="flex gap-2 pt-2 pb-2">
         <div class="w-2/12">
-          <span class="font-medium">Total Profit</span>
+          <span class="font-medium">Loss</span>
         </div>
         <div class="w-10/12">
-          <span><%= format_price(sales_report.total_profit) %></span>
+          <span class="text-danger-500"><%= format_price(sales_report.loss) %></span>
+        </div>
+      </div>
+      <div class="flex gap-2 pt-2 pb-2">
+        <div class="w-2/12">
+          <span class="font-medium">Revenue</span>
+        </div>
+        <div class="w-10/12">
+          <span><%= format_price(sales_report.revenue) %></span>
+        </div>
+      </div>
+      <div class="flex gap-2 pt-2 pb-2">
+        <div class="w-2/12">
+          <span class="font-medium">Net Profit</span>
+        </div>
+        <div class="w-10/12">
+          <span class="font-semibold <%= net_profit_class(sales_report.net_profit) %>">
+            <%= format_price(sales_report.net_profit) %>
+          </span>
         </div>
       </div>
       <div class="flex gap-2 pt-2 pb-4">
         <div class="w-2/12">
-          <span class="font-medium">Total Loss</span>
+          <span class="font-medium">Collected</span>
         </div>
         <div class="w-10/12">
-          <span><%= format_price(sales_report.total_loss) %></span>
+          <span class="px-2 py-1 text-xs font-semibold border rounded-full <%= collected_class(sale.sales_report.is_collected) %>">
+            <%= sale.sales_report.is_collected ? "Yes" : "No" %>
+          </span>
         </div>
       </div>
     </div>

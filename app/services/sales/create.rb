@@ -9,9 +9,11 @@ class Sales::Create < ApplicationService
         selling_price: 0,
         sold_quantity: 0,
         unsold_quantity: sale.quantity,
-        waste_quantity: 0,
-        total_revenue: 0,
-        total_profit: 0,
+        revenue: 0,
+        grass_profit: 0,
+        loss: 0,
+        net_profit: 0,
+        is_collected: false,
       )
 
       success(sale: sale)
