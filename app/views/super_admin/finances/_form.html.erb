@@ -1,0 +1,28 @@
+<%= form_with model: finance, 
+    url: url, 
+    class: "mt-5 flex flex-col gap-5" do |form| %>
+  <div class="block bg-white border border-gray-300 rounded-lg divide-y divide-gray-300">
+    <div class="p-4 lg:p-6">
+      <h3 class="font-medium text-gray-700">Finance Form</h3>
+      <p class="text-sm text-gray-500"><%= form_instruction("finance", finance) %></p>
+    </div>
+    <div class="p-4 lg:p-6 flex flex-col gap-3">
+      <div>
+        <%= render(Ui::LabelInputComponent.new(form: form, field_name: :production_cost, label: "Production Cost", required: true)) %>
+        <%= render(Ui::NumberInputComponent.new(form: form, field_name: :production_cost, class: "mt-2")) %>
+        <%= render(ErrorInputComponent.new(model: finance, field_name: :production_cost)) %>
+      </div>
+      <div>
+        <%= render(Ui::LabelInputComponent.new(form: form, field_name: :net_profit, label: "Net Profit", required: true)) %>
+        <%= render(Ui::NumberInputComponent.new(form: form, field_name: :net_profit, class: "mt-2")) %>
+        <%= render(ErrorInputComponent.new(model: finance, field_name: :net_profit)) %>
+      </div>
+    </div>
+  </div>
+  <div class="flex items-center justify-end">
+    <%= render(Ui::ButtonComponent.new(type: "submit", size: "md", variant: "primary", class: "flex items-center gap-2")) do %>
+      <%= lucide_icon("save", class: "size-5") %>
+      <span>Save</span>
+    <% end %>
+  </div>
+<% end %>

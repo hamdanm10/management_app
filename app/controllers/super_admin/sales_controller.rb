@@ -22,33 +22,11 @@ class SuperAdmin::SalesController < SuperAdminApplicationController
       redirect_to new_super_admin_sales_entry_sale_path(@sales_entry), notice: "Sale successfully created."
     else
       @sale = result.error[:sale]
+      @sales_report = result.error[:sales_report]
 
       render :new, status: :unprocessable_entity
     end
   end
-
-  # def edit
-  #   @sales_entry = sales_entry_scope
-  #   @sale = sale_scope
-  # end
-
-  # def update
-  #   @sales_entry = sales_entry_scope
-  #   result = Sales::Update.call(
-  #     sale: sale_scope,
-  #     sale_attributes: sale_params
-  #   )
-
-  #   if result.success?
-  #     sale = result.payload[:sale]
-
-  #     redirect_to edit_super_admin_sales_entry_sale_path(@sales_entry, sale), notice: "Sale successfully updated."
-  #   else
-  #     @sale = result.error[:sale]
-
-  #     render :edit, status: :unprocessable_entity
-  #   end
-  # end
 
   def destroy
     result = Sales::Destroy.call(

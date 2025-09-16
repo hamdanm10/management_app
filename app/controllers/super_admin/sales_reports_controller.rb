@@ -41,7 +41,7 @@ class SuperAdmin::SalesReportsController < SuperAdminApplicationController
   end
 
   def sales_report_params
-    params.require(:sales_report).permit(:cost_price, :selling_price, :sold_quantity, :unsold_quantity, :waste_quantity)
+    params.require(:sales_report).permit(:cost_price, :selling_price, :sold_quantity, :unsold_quantity, :is_collected)
   end
 
   def sales_report_scope

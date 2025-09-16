@@ -1,0 +1,18 @@
+<div class="flex gap-0 items-center justify-between">
+  <h2 class="text-xl font-bold text-gray-700">Finance</h2>
+  <div class="hidden lg:block">
+    <%= render(Ui::BreadcrumbComponent.new) do %>
+      <%= render(Ui::BreadcrumbItemComponent.new(url: super_admin_dashboard_path, icon: "layout-grid", name: "Dashboard")) %>
+      <%= render(Ui::BreadcrumbItemComponent.new(name: "Finance", last: true)) %>
+    <% end %>
+  </div>
+</div>
+<div class="mt-5">
+  <div class="flex">
+    <%= render(Ui::ButtonLinkComponent.new(size: "sm", variant: "light", url: edit_super_admin_finance_path(@finance), class: "flex items-center gap-2")) do %>
+      <%= lucide_icon("settings", class: "size-5") %>
+      <span>Manage</span>
+    <% end %>
+  </div>
+</div>
+<%= render "finance_detail", finance: @finance %>

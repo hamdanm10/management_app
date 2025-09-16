@@ -12,39 +12,21 @@
     <%= sale.quantity %>
   </td>
   <td class="px-6 py-4 whitespace-nowrap font-normal text-gray-700">
-    <div class="flex flex-col gap-2">
-      <div>
-        <span class="text-gray-700">Sold -</span>
-        <span class="font-semibold text-success-500"><%= sale.sales_report.sold_quantity %></span>
-      </div>
-      <div>
-        <span class="text-gray-700">Unsold -</span>
-        <span class="font-semibold text-warning-500"><%= sale.sales_report.unsold_quantity %></span>
-      </div>
-      <div>
-        <span class="text-gray-700">Waste -</span>
-        <span class="font-semibold text-danger-500"><%= sale.sales_report.waste_quantity %></span>
-      </div>
+    <div class="flex gap-1">
+      <span class="font-semibold text-success-500"><%= sale.sales_report.sold_quantity %></span>
+      <span class="font-semibold text-gray-700">/</span>
+      <span class="font-semibold text-red-500"><%= sale.sales_report.unsold_quantity %></span>
     </div>
   </td>
   <td class="px-6 py-4 whitespace-nowrap font-normal text-gray-700">
-    <div class="flex flex-col gap-2">
-      <div>
-        <span class="text-gray-700">Revenue -</span>
-        <span class="font-semibold text-warning-500"><%= format_price(sale.sales_report.total_revenue) %></span>
-      </div>
-      <div>
-        <span class="text-gray-700">Profit -</span>
-        <span class="font-semibold text-success-500"><%= format_price(sale.sales_report.total_profit) %></span>
-      </div>
-      <div>
-        <span class="text-gray-700">Loss -</span>
-        <span class="font-semibold text-danger-500"><%= format_price(sale.sales_report.total_loss) %></span>
-      </div>
-    </div>
+    <span class="font-semibold <%= net_profit_class(sale.sales_report.net_profit) %>">
+      <%= format_price(sale.sales_report.net_profit) %>
+    </span>
   </td>
   <td class="px-6 py-4 whitespace-nowrap font-normal text-gray-700">
-    <%= sale.note %>
+    <span class="px-2 py-1 text-sm font-semibold border rounded-full <%= collected_class(sale.sales_report.is_collected) %>">
+      <%= sale.sales_report.is_collected ? "Yes" : "No" %>
+    </span>
   </td>
   <td class="px-6 py-4 whitespace-nowrap font-normal text-gray-700">
     <div class="flex">
