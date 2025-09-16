@@ -10,7 +10,7 @@ class Sales::Create < ApplicationService
         sold_quantity: 0,
         unsold_quantity: sale.quantity,
         revenue: 0,
-        grass_profit: 0,
+        gross_profit: 0,
         loss: 0,
         net_profit: 0,
         is_collected: false,

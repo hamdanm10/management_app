@@ -5,7 +5,7 @@ class SalesReport < ApplicationRecord
   validates :sold_quantity, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validates :unsold_quantity, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validates :revenue, presence: true, numericality: { greater_than_or_equal_to: 0 }
-  validates :grass_profit, presence: true, numericality: { greater_than_or_equal_to: 0 }
+  validates :gross_profit, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :loss, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :net_profit, presence: true
   validates :is_collected, inclusion: { in: [true, false] }
@@ -19,11 +19,17 @@ class SalesReport < ApplicationRecord
   private
 
   def calculate_totals
-    self.revenue = sold_quantity * selling_price.to_d
-    self.grass_profit = ((selling_price.to_d - cost_price.to_d) * sold_quantity)
-    self.loss = unsold_quantity * cost_price.to_d
+    self.revenue = 0
+    self.gross_profit = 0
+    self.loss = 0
+    self.net_profit = 0
 
-    self.net_profit = is_collected ? (self.grass_profit - self.loss) : 0.to_d
+    return unless is_collected
+
+    self.revenue = sold_quantity * selling_price.to_d
+    self.gross_profit = ((selling_price.to_d - cost_price.to_d) * sold_quantity)
+    self.loss = unsold_quantity * cost_price.to_d
+    self.net_profit = gross_profit.to_d - loss.to_d
   end
 
   def total_quantities_must_be_equal_to_sale_quantity

@@ -95,7 +95,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_12_142222) do
     t.integer "sold_quantity", null: false
     t.integer "unsold_quantity", null: false
     t.decimal "revenue", precision: 12, scale: 2, default: "0.0", null: false
-    t.decimal "grass_profit", precision: 12, scale: 2, default: "0.0", null: false
+    t.decimal "gross_profit", precision: 12, scale: 2, default: "0.0", null: false
     t.decimal "loss", precision: 12, scale: 2, default: "0.0", null: false
     t.decimal "net_profit", precision: 12, scale: 2, default: "0.0", null: false
     t.boolean "is_collected", default: false, null: false
